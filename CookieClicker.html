@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>クッキー工房</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="./CookieClicker.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <h1>🍪 クッキー工房</h1>
+  <div style="display:flex; align-items:center; gap:14px;">
+    <span class="cps-total" id="headerCps">毎秒 +0</span>
+    <button class="reset-btn" id="resetBtn">リセット</button>
+  </div>
+  <div id="save_load">
+  <button class="save-btn" id="saveBtn">保存</button>
+  <button class="load-btn" id="loadBtn">読み込み</button>
+</div>
+</header>
+
+<main>
+  <section class="cookie-panel">
+    <div class="count-label">総クッキー数</div>
+    <div class="count-num big-num" id="cookieCount">0</div>
+    <div class="cps-line" id="cpsLine">毎秒 +0 個</div>
+
+    <div class="cookie-wrap" id="cookieWrap">
+      <button class="cookie-btn pulse" id="cookieBtn" aria-label="クッキーをクリック">🍪</button>
+    </div>
+    <div class="click-power-line" id="clickPowerLine">1クリックで +1</div>
+  </section>
+
+  <section class="shop-panel">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="producers">生産施設</button>
+      <button class="tab-btn" data-tab="upgrades">クリック強化</button>
+      <button class="tab-btn" data-tab="achievements">実績</button>
+    </div>
+
+    <div class="item-list" id="producersList"></div>
+    <div class="item-list" id="upgradesList" style="display:none;"></div>
+    <div class="item-list" id="achievementsList" style="display:none;"></div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="./CookieCliker.js"></script>
+
+</body>
+</html>
