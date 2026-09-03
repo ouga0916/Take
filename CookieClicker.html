@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>クッキー工房</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="./CookieClicker.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    
+</head>
+<body>
+
+<header>
+  <h1>🍪 クッキー工房</h1>
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <span class="cps-total" id="headerCps">毎秒 +0</span>
+    <span class="header-badge" id="headerPrestige">👼 0</span>
+    <button class="reset-btn" id="resetBtn">完全リセット</button>
+  </div>
+    <div id="save_load">
+  <button class="btn" id="slBtn">データ管理</button>
+  </div>
+  
+</header>
+
+<main>
+  <section class="cookie-panel">
+    <div class="count-label">総クッキー数</div>
+    <div class="count-num big-num" id="cookieCount">0</div>
+    <div class="cps-line" id="cpsLine">毎秒 +0 個</div>
+
+    <div class="cookie-wrap" id="cookieWrap">
+      <button class="cookie-btn pulse" id="cookieBtn" aria-label="クッキーをクリック">🍪</button>
+    </div>
+    <div class="click-power-line" id="clickPowerLine">1クリックで +1</div>
+  </section>
+
+  <section class="shop-panel">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="producers">生産施設</button>
+      <button class="tab-btn" data-tab="upgrades">クリック強化</button>
+      <button class="tab-btn" data-tab="achievements">実績</button>
+      <button class="tab-btn" data-tab="prestige">転生</button>
+      <button class="tab-btn" data-tab="other">その他強化</button>
+    </div>
+
+    <div class="item-list" id="producersList"></div>
+    <div class="item-list" id="upgradesList" style="display:none;"></div>
+    <div class="item-list" id="achievementsList" style="display:none;"></div>
+    <div id="prestigePanel" style="display:none;">
+      <div class="prestige-hero">
+        <div class="p-icon">👼</div>
+        <div class="p-points" id="prestigePointsLine">0 天使のクッキー</div>
+        <div class="p-bonus" id="prestigeBonusLine">総生産量 永久+0%</div>
+        <div class="p-gain" id="prestigeGainLine">今転生すると +0 個獲得</div>
+        <button class="prestige-btn" id="prestigeBtn">転生する</button>
+      </div>
+      <div class="item-list" id="prestigeUpgradesList"></div>
+    </div>
+    <div id="otherPanel" style="display:none;">
+      <div class="other-section-title">📈 株式市場</div>
+      <div class="other-note">値動きは数秒ごとに変動します。安く買って高く売りましょう。</div>
+      <div id="stockList"></div>
+
+      <div class="other-section-title">🐣 生物育成</div>
+      <div class="prestige-hero" style="margin-bottom:12px;">
+        <div class="p-icon" id="petIcon">🥚</div>
+        <div class="p-points" id="petNameLine">クッキーの卵</div>
+        <div class="p-bonus" id="petBonusLine">総生産量 永久+0%</div>
+        <div class="p-gain" id="petFedLine">レベル 0（累計 0 捧げた）</div>
+      </div>
+      <div class="other-note">所持している生産施設を1体ずつ生贄に捧げて育てます。捧げた施設は失われます。</div>
+      <div class="item-list" id="sacrificeList"></div>
+    </div>
+  </section>
+</main>
+
+<div id="overLay">
+    <div id="olDisp">
+      <label id="dataName">データ名<input id="dn" type="text" value="データ"></label>
+      <button id="save">セーブ</button><button id="load">ロード</button><button id="delete">削除</button>
+      <p>保存データ</p>
+      <div id="dataList"></div>
+      <div id="olNote">
+      ここにデータ名が表示されます。<br>
+      データは端末に保存されます。<br>
+      データを削除すると元に戻せません。<br>
+      データ名は自由に変更できます。<br>
+      データ名を変更してロードすると新しいデータとして保存されます。<br>
+      データ名を変更してセーブすると新しいデータとして保存されます。<br>
+      データ名を変更して削除すると元のデータは削除されません。<br>
+      </div>
+
+      <button id="olCrose">閉じる</button>
+    </div>
+  </div>
+
+<div class="toast" id="toast"></div>
+
+<script src="./CookieCliker.js"></script>
+</body>
+</html>

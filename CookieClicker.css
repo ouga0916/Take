@@ -1,0 +1,479 @@
+ :root{
+    --bg-deep:#0f1b33;
+    --bg-panel:#3a2415;
+    --bg-panel-2:#43281a;
+    --cream:#f5e6c8;
+    --cream-dim:#d8c6a3;
+    --caramel:#c97b2e;
+    --butter:#e8b04b;
+    --butter-bright:#ffcf6b;
+    --cinnamon:#d94f4f;
+    --green-ok:#7fb069;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 15% 0%, #24406b 0%, transparent 50%),
+      radial-gradient(circle at 100% 15%, #1c3157 0%, transparent 55%),
+      radial-gradient(circle at 50% 100%, #142544 0%, transparent 60%),
+      linear-gradient(180deg, #16294a 0%, var(--bg-deep) 100%);
+    color:var(--cream);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .big-num{font-family:'Baloo 2', sans-serif;}
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    border-bottom:3px solid var(--caramel);
+    background:rgba(0,0,0,0.15);
+  }
+  header h1{
+    margin:0;
+    font-size:22px;
+    font-weight:700;
+    color:var(--butter-bright);
+    letter-spacing:0.5px;
+  }
+  header .cps-total{
+    font-size:14px;
+    color:var(--cream-dim);
+    font-weight:600;
+  }
+  .reset-btn{
+    background:transparent;
+    border:2px solid var(--cinnamon);
+    color:var(--cinnamon);
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    font-size:12px;
+    padding:6px 12px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .reset-btn:hover{background:var(--cinnamon);color:var(--bg-deep);}
+
+  main{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:20px;
+    padding:20px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  @media (max-width:760px){
+    main{grid-template-columns:1fr; padding:14px;}
+  }
+
+  /* --- left: cookie panel --- */
+  .cookie-panel{
+    background:var(--bg-panel);
+    border:3px solid var(--caramel);
+    border-radius:20px;
+    padding:22px 16px 26px;
+    text-align:center;
+    overflow:hidden;
+    height:fit-content;
+  }
+  .count-label{font-size:13px;color:var(--cream-dim);font-weight:700;letter-spacing:0.5px;}
+  .count-num{
+    font-size:38px;
+    font-weight:800;
+    color:var(--butter-bright);
+    line-height:1.15;
+    margin:2px 0 2px;
+    word-break:break-all;
+  }
+  .cps-line{font-size:14px; color:var(--green-ok); font-weight:700; margin-bottom:14px;}
+
+  .cookie-wrap{position:relative; display:inline-block; margin:8px 0 6px;}
+  .cookie-btn{
+    font-size:150px;
+    line-height:1;
+    background:none;
+    border:none;
+    cursor:pointer;
+    filter:drop-shadow(0 10px 14px rgba(0,0,0,0.45));
+    transition:transform 0.06s ease-out;
+    user-select:none;
+    -webkit-user-select:none;
+    touch-action:manipulation;
+  }
+  .cookie-btn:active{transform:scale(0.9) rotate(-3deg);}
+  .cookie-btn.pulse{animation:pulse 2.6s ease-in-out infinite;}
+  @keyframes pulse{
+    0%,100%{transform:scale(1) rotate(0deg);}
+    50%{transform:scale(1.03) rotate(1deg);}
+  }
+  .float-num{
+    position:absolute;
+    pointer-events:none;
+    font-weight:800;
+    font-family:'Baloo 2', sans-serif;
+    color:var(--butter-bright);
+    text-shadow:0 2px 4px rgba(0,0,0,0.5);
+    animation:floatUp 0.9s ease-out forwards;
+    font-size:20px;
+    white-space:nowrap;
+  }
+  @keyframes floatUp{
+    0%{opacity:1; transform:translate(-50%,0);}
+    100%{opacity:0; transform:translate(-50%,-70px);}
+  }
+  .click-power-line{font-size:12px; color:var(--cream-dim); margin-top:6px;}
+
+  /* --- right: shop panel --- */
+  .shop-panel{
+    background:var(--bg-panel);
+    border:3px solid var(--caramel);
+    border-radius:20px;
+    padding:16px;
+    min-height:400px;
+    max-height:600px;        /* ← 追加：好みの高さに調整してください */
+    display:flex;             /* ← 追加 */
+    flex-direction:column;    /* ← 追加 */
+    overflow:hidden;          /* ← 追加：パネル自体はここで区切る */
+  }
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:14px;
+    border-bottom:2px solid rgba(201,123,46,0.35);
+    padding-bottom:12px;
+    flex-wrap:wrap;
+    flex-shrink:0;             /* ← 追加：タブは縮まないように固定 */
+  }
+  .tab-btn{
+    background:var(--bg-panel-2);
+    border:2px solid transparent;
+    color:var(--cream-dim);
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    padding:8px 14px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .tab-btn.active{
+    border-color:var(--butter);
+    color:var(--butter-bright);
+    background:rgba(232,176,75,0.12);
+  }
+
+  .item-list{display:flex;
+    flex-direction:column;
+    gap:10px;
+    overflow-y:auto;           /* ← 追加：ここでスクロール */
+    min-height:0;              /* ← 追加：flex内でスクロールを効かせる定石 */
+  }
+
+  #prestigePanel,
+#otherPanel{
+  overflow-y:auto;
+  min-height:0;
+  flex:1;
+}
+
+  .item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--bg-panel-2);
+    border:2px solid rgba(201,123,46,0.4);
+    border-radius:14px;
+    padding:10px 12px;
+    cursor:pointer;
+    text-align:left;
+    font-family:'Nunito',sans-serif;
+    color:var(--cream);
+    transition:border-color 0.15s, transform 0.08s;
+  }
+  .item:hover:not(.disabled){border-color:var(--butter-bright); transform:translateY(-1px);}
+  .item:active:not(.disabled){transform:translateY(0);}
+  .item.disabled{opacity:0.45; cursor:not-allowed;}
+  .item.owned-glow{border-color:var(--green-ok);}
+  .item-emoji{font-size:30px; width:40px; text-align:center; flex-shrink:0;}
+  .item-info{flex:1; min-width:0;}
+  .item-name{font-weight:800; font-size:14px; color:var(--butter-bright);}
+  .item-desc{font-size:11px; color:var(--cream-dim); margin-top:1px;}
+  .item-sub{font-size:11px; color:var(--cream-dim); margin-top:3px;}
+  .item-right{text-align:right; flex-shrink:0;}
+  .item-cost{font-weight:800; font-size:13px; color:var(--butter);}
+  .item-count{font-size:11px; color:var(--cream-dim); margin-top:2px;}
+
+  .ach-item{
+    background:var(--bg-panel-2);
+    border:2px solid rgba(201,123,46,0.4);
+    border-radius:14px;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .ach-item.locked{opacity:0.35;}
+  .ach-item.unlocked{border-color:var(--butter-bright);}
+  .ach-emoji{font-size:24px; width:34px; text-align:center;}
+  .ach-name{font-weight:800; font-size:13px; color:var(--butter-bright);}
+  .ach-desc{font-size:11px; color:var(--cream-dim);}
+  .empty-note{font-size:12px; color:var(--cream-dim); padding:8px 2px;}
+
+  .header-badge{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    background:rgba(232,176,75,0.12);
+    border:2px solid var(--butter);
+    color:var(--butter-bright);
+    font-weight:800;
+    font-size:13px;
+    padding:5px 10px;
+    border-radius:999px;
+  }
+
+  .prestige-hero{
+    background:linear-gradient(160deg, rgba(232,176,75,0.14), rgba(217,79,79,0.10));
+    border:2px solid var(--butter);
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .prestige-hero .p-icon{font-size:44px; line-height:1;}
+  .prestige-hero .p-points{
+    font-family:'Baloo 2', sans-serif;
+    font-size:28px;
+    font-weight:800;
+    color:var(--butter-bright);
+    margin:4px 0 2px;
+  }
+  .prestige-hero .p-bonus{font-size:12px; color:var(--green-ok); font-weight:700;}
+  .prestige-hero .p-gain{font-size:12px; color:var(--cream-dim); margin:10px 0 12px;}
+  .prestige-btn{
+    background:var(--butter);
+    color:#2b1b12;
+    border:none;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding:10px 22px;
+    border-radius:12px;
+    cursor:pointer;
+  }
+  .prestige-btn:disabled{
+    background:rgba(232,176,75,0.25);
+    color:var(--cream-dim);
+    cursor:not-allowed;
+  }
+  .prestige-btn:not(:disabled):hover{background:var(--butter-bright);}
+
+  .item-buttons{display:flex; flex-direction:column; gap:6px; align-items:stretch; flex-shrink:0; min-width:88px;}
+  .buy-btn{
+    background:var(--butter);
+    color:#2b1b12;
+    border:none;
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:12px;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .buy-btn:disabled{background:rgba(232,176,75,0.25); color:var(--cream-dim); cursor:not-allowed;}
+  .buy-btn:not(:disabled):hover{background:var(--butter-bright);}
+  .sell-btn{
+    background:transparent;
+    border:1px solid var(--cinnamon);
+    color:var(--cinnamon);
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    padding:5px 10px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .sell-btn:disabled{opacity:0.3; cursor:not-allowed;}
+  .sell-btn:not(:disabled):hover{background:rgba(217,79,79,0.15);}
+
+  .other-section-title{
+    font-size:13px; font-weight:800; color:var(--butter-bright);
+    margin:18px 0 10px; letter-spacing:0.3px;
+  }
+  .other-section-title:first-child{margin-top:0;}
+  .other-note{font-size:11px; color:var(--cream-dim); margin:-4px 0 10px;}
+
+  .stock-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--bg-panel-2);
+    border:2px solid rgba(201,123,46,0.4);
+    border-radius:14px;
+    padding:10px 12px;
+    margin-bottom:10px;
+  }
+  .stock-emoji{font-size:26px; width:36px; text-align:center; flex-shrink:0;}
+  .stock-info{flex:1; min-width:0;}
+  .stock-name{font-weight:800; font-size:13px; color:var(--butter-bright);}
+  .stock-price{font-size:12px; margin-top:2px; font-weight:700; color:var(--cream-dim);}
+  .stock-price.up{color:var(--green-ok);}
+  .stock-price.down{color:var(--cinnamon);}
+  .stock-shares{font-size:11px; color:var(--cream-dim); margin-top:2px;}
+  .stock-actions{display:flex; flex-direction:column; gap:5px; flex-shrink:0;}
+  .stock-btn{
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:11px;
+    padding:5px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    border:none;
+    white-space:nowrap;
+  }
+  .stock-btn.buy{background:var(--butter); color:#2b1b12;}
+  .stock-btn.sell{background:transparent; border:1px solid var(--cinnamon); color:var(--cinnamon);}
+  .stock-btn:disabled{opacity:0.35; cursor:not-allowed;}
+
+  .toast{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--bg-panel);
+    border:2px solid var(--butter);
+    color:var(--butter-bright);
+    padding:10px 18px;
+    border-radius:12px;
+    font-weight:700;
+    font-size:13px;
+    opacity:0;
+    transition:opacity 0.25s, transform 0.25s;
+    pointer-events:none;
+    z-index:50;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  /* ---------- Overlay ---------- */
+
+#overLay {
+  display: none;
+  top: 0; left: 0;
+  position: fixed;
+  z-index: 9999;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#olDisp {
+  color: #222;
+  background: #ffffff;
+  padding: 32px 36px;
+  border-radius: 14px;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 85vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  overflow: hidden;   /* パネル自体は区切って、中の要素ごとにスクロールさせる */
+}
+
+#dataName {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #555;
+}
+
+#dn {
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+#dn:focus {
+  border-color: #4a90d9;
+}
+
+/* ボタン共通 */
+#olDisp button {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.08s;
+}
+#olDisp button:active {
+  transform: translateY(1px);
+}
+
+#save, #load {
+  background: #4a90d9;
+  color: white;
+  margin-right: 6px;
+}
+#save:hover, #load:hover { background: #3a78bd; }
+
+#delete {
+  background: #d9534f;
+  color: white;
+}
+#delete:hover { background: #c9302c; }
+
+#olCrose {
+  background: #eee;
+  color: #333;
+  align-self: flex-end;
+}
+#olCrose:hover { background: #ddd; }
+
+/* ここがご要望のスクロール対応部分 */
+#dataList {
+  max-height: 180px;       /* お好みで調整してください */
+  overflow-y: auto;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fafafa;
+}
+#dataList::-webkit-scrollbar { width: 8px; }
+#dataList::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 8px;
+}
+#dataList::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+#olNote {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #777;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 12px 14px;
+  overflow-y: auto;   /* 注意書きが長い場合も安心 */
+  max-height: 160px;
+}
+
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:var(--caramel); border-radius:4px;}
