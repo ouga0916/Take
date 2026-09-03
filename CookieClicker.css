@@ -1,5 +1,5 @@
-:root{
-    --bg-deep:#2b1b12;
+ :root{
+    --bg-deep:#0f1b33;
     --bg-panel:#3a2415;
     --bg-panel-2:#43281a;
     --cream:#f5e6c8;
@@ -15,9 +15,10 @@
   body{
     font-family:'Nunito', sans-serif;
     background:
-      radial-gradient(circle at 20% 0%, #4a2c17 0%, transparent 45%),
-      radial-gradient(circle at 100% 100%, #3a220f 0%, transparent 50%),
-      var(--bg-deep);
+      radial-gradient(circle at 15% 0%, #24406b 0%, transparent 50%),
+      radial-gradient(circle at 100% 15%, #1c3157 0%, transparent 55%),
+      radial-gradient(circle at 50% 100%, #142544 0%, transparent 60%),
+      linear-gradient(180deg, #16294a 0%, var(--bg-deep) 100%);
     color:var(--cream);
     min-height:100vh;
     -webkit-font-smoothing:antialiased;
@@ -76,7 +77,6 @@
     border-radius:20px;
     padding:22px 16px 26px;
     text-align:center;
-    position:relative;
     overflow:hidden;
     height:fit-content;
   }
@@ -133,11 +133,11 @@
     border:3px solid var(--caramel);
     border-radius:20px;
     padding:16px;
-    min-height:100px;
+    min-height:400px;
   }
   .tabs{
     display:flex;
-    gap:4px;
+    gap:8px;
     margin-bottom:14px;
     border-bottom:2px solid rgba(201,123,46,0.35);
     padding-bottom:12px;
@@ -204,6 +204,122 @@
   .ach-desc{font-size:11px; color:var(--cream-dim);}
   .empty-note{font-size:12px; color:var(--cream-dim); padding:8px 2px;}
 
+  .header-badge{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    background:rgba(232,176,75,0.12);
+    border:2px solid var(--butter);
+    color:var(--butter-bright);
+    font-weight:800;
+    font-size:13px;
+    padding:5px 10px;
+    border-radius:999px;
+  }
+
+  .prestige-hero{
+    background:linear-gradient(160deg, rgba(232,176,75,0.14), rgba(217,79,79,0.10));
+    border:2px solid var(--butter);
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .prestige-hero .p-icon{font-size:44px; line-height:1;}
+  .prestige-hero .p-points{
+    font-family:'Baloo 2', sans-serif;
+    font-size:28px;
+    font-weight:800;
+    color:var(--butter-bright);
+    margin:4px 0 2px;
+  }
+  .prestige-hero .p-bonus{font-size:12px; color:var(--green-ok); font-weight:700;}
+  .prestige-hero .p-gain{font-size:12px; color:var(--cream-dim); margin:10px 0 12px;}
+  .prestige-btn{
+    background:var(--butter);
+    color:#2b1b12;
+    border:none;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding:10px 22px;
+    border-radius:12px;
+    cursor:pointer;
+  }
+  .prestige-btn:disabled{
+    background:rgba(232,176,75,0.25);
+    color:var(--cream-dim);
+    cursor:not-allowed;
+  }
+  .prestige-btn:not(:disabled):hover{background:var(--butter-bright);}
+
+  .item-buttons{display:flex; flex-direction:column; gap:6px; align-items:stretch; flex-shrink:0; min-width:88px;}
+  .buy-btn{
+    background:var(--butter);
+    color:#2b1b12;
+    border:none;
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:12px;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .buy-btn:disabled{background:rgba(232,176,75,0.25); color:var(--cream-dim); cursor:not-allowed;}
+  .buy-btn:not(:disabled):hover{background:var(--butter-bright);}
+  .sell-btn{
+    background:transparent;
+    border:1px solid var(--cinnamon);
+    color:var(--cinnamon);
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    padding:5px 10px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .sell-btn:disabled{opacity:0.3; cursor:not-allowed;}
+  .sell-btn:not(:disabled):hover{background:rgba(217,79,79,0.15);}
+
+  .other-section-title{
+    font-size:13px; font-weight:800; color:var(--butter-bright);
+    margin:18px 0 10px; letter-spacing:0.3px;
+  }
+  .other-section-title:first-child{margin-top:0;}
+  .other-note{font-size:11px; color:var(--cream-dim); margin:-4px 0 10px;}
+
+  .stock-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--bg-panel-2);
+    border:2px solid rgba(201,123,46,0.4);
+    border-radius:14px;
+    padding:10px 12px;
+    margin-bottom:10px;
+  }
+  .stock-emoji{font-size:26px; width:36px; text-align:center; flex-shrink:0;}
+  .stock-info{flex:1; min-width:0;}
+  .stock-name{font-weight:800; font-size:13px; color:var(--butter-bright);}
+  .stock-price{font-size:12px; margin-top:2px; font-weight:700; color:var(--cream-dim);}
+  .stock-price.up{color:var(--green-ok);}
+  .stock-price.down{color:var(--cinnamon);}
+  .stock-shares{font-size:11px; color:var(--cream-dim); margin-top:2px;}
+  .stock-actions{display:flex; flex-direction:column; gap:5px; flex-shrink:0;}
+  .stock-btn{
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:11px;
+    padding:5px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    border:none;
+    white-space:nowrap;
+  }
+  .stock-btn.buy{background:var(--butter); color:#2b1b12;}
+  .stock-btn.sell{background:transparent; border:1px solid var(--cinnamon); color:var(--cinnamon);}
+  .stock-btn:disabled{opacity:0.35; cursor:not-allowed;}
+
   .toast{
     position:fixed;
     bottom:20px;
@@ -222,6 +338,27 @@
     z-index:50;
   }
   .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+   #overLay {
+    display: none;           /* 最初は非表示 */
+    top: 0; left: 0;
+    position:fixed;
+    z-index: 9999;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 実際に表示する「新しい画面」の中身 */
+  #olDisp {
+    color:#000000;
+    background: white;
+    padding: 100px;
+    border-radius: 8px;
+    min-width: 300px;
+    position:relative
+  }
 
   ::-webkit-scrollbar{width:8px;}
   ::-webkit-scrollbar-thumb{background:var(--caramel); border-radius:4px;}
